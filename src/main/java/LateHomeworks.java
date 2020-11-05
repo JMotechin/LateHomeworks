@@ -40,8 +40,11 @@ public class LateHomeworks {
                                                        ClassroomScopes.CLASSROOM_ROSTERS_READONLY);
     private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
 
-    //Set of first and last names of students to be checked
-    private static Set<String> RRStudents = new HashSet<>(List.of(""));
+    /**
+     * Set of first and last names of students to be checked
+     * Add comma separated student list in the parentheses, and remove the examples
+     */
+    private static Set<String> MyStudents = new HashSet<>(List.of("Example Name One", "Example Name Two"));
 
     private static HashMap<String, String> studentIDMap = new HashMap<>();
 
@@ -105,7 +108,7 @@ public class LateHomeworks {
                     continue;
                 }
                 for (StudentSubmission submission : submissions) {
-                    if(RRStudents.contains(studentIDMap.get(submission.getUserId()))){
+                    if(MyStudents.contains(studentIDMap.get(submission.getUserId()))){
                         if(isLate(submission) || completedByMostOfClass(submissions)){
                             try {
                                 List<String> appendedList = lateMap.get(studentIDMap.get(submission.getUserId()));
